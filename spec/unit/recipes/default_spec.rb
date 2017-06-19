@@ -42,7 +42,7 @@ describe 'bender_is_great::default' do
           end
         end
 
-        it 'does not piss Bender off!' do
+        it "does not discriminate against Bender's desired OS" do
           expect(chef_run).to_not write_log('This is the worst kind of discrimination there is: the kind against me!').with(
            level: :info
           )

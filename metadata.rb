@@ -1,6 +1,6 @@
 name 'bender_is_great'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
+maintainer 'Patrick Dayton'
+maintainer_email 'patrick@docnetwork.org'
 license 'All Rights Reserved'
 description 'Installs/Configures bender_is_great'
 long_description 'Installs/Configures bender_is_great'
