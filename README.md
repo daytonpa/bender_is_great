@@ -30,6 +30,7 @@ All Unit tests are performed by ChefSpec, and can be viewed inside the ```spec/u
 * ```spec/unit/recipes/bender_spec.rb``` scans ```recipes/bender.rb```
 
 ChefSpec doesn't check for network connections, security, etc.  Its purpose is to verify each recipe is going to do exacyly what you tell it to do.  As illustrated below, here is a snippet of our ```default.rb``` recipe and our ```default_spec.rb``` spec file.
+
 ```
 # recipes/default.rb
 
@@ -59,15 +60,19 @@ end
 
 ### .kitchen.yml
 This is our configuration file for spinning up machines with Chef.  Feel free to change between platforms to see how Chef will install each resource depending on the desired platforms.  By default, we are using ubuntu.
+
 ```
 platforms:
   - name: ubuntu-16.04
-  # - name: centos-7.3```
+  # - name: centos-7.3
+```
 
 ### metadata.rb
 This is our primary cookbook dependency file.  You can include other community-built or your own cookbooks as dependencies to utilize customized resources within your recipes.  We currently have 2 dependencies on community-built cookbooks:
+
 ```
 depends 'apt'
 depends 'yum'
 ```
+
 There are a ton of fully tested and working cookbooks located [HERE](https://supermarket.chef.io/dashboard) at the Chef Supermarket.
