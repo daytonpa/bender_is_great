@@ -14,10 +14,11 @@ service 'nginx' do
 end
 
 template '/etc/nginx/nginx.conf' do
-  user 'root'
-  group 'root'
+  owner node['bender_is_great']['user']
+  group node['bender_is_great']['group']
   mode '0644'
   source 'nginx.conf.erb'
+  
   action :create
   notifies :restart, 'service[nginx]', :immediately
 end

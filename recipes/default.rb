@@ -22,6 +22,7 @@ else
   end
 end
 
-include_recipe 'bender_is_great::apache'
-include_recipe 'bender_is_great::nginx'
-include_recipe 'bender_is_great::bender'
+# nginx
+%w(apache bender).each do |recipe|
+  include_recipe "bender_is_great::#{recipe}"
+end

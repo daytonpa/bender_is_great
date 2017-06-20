@@ -12,7 +12,7 @@ describe 'bender_is_great::default' do
     'centos' => ['7.2.1511']
   }.each do |platform, version|
     version.each do |v|
-      context "When all attributes are default, on an #{platform.capitalize} #{v}" do
+      context "When converging with default attributes on #{platform.capitalize} #{v}" do
         let(:chef_run) do
           # for a complete list of available platforms and versions see:
           # https://github.com/customink/fauxhai/blob/master/PLATFORMS.md
@@ -36,8 +36,8 @@ describe 'bender_is_great::default' do
           end
         end
 
-        it 'includes the `apache`, `nginx`, `bender` recipes' do
-          %w(apache nginx bender).each do |recipe|
+        %w(apache bender).each do |recipe|
+          it "includes the `#{recipe}` recipe" do
             expect(chef_run).to include_recipe("bender_is_great::#{recipe}")
           end
         end
@@ -47,7 +47,6 @@ describe 'bender_is_great::default' do
            level: :info
           )
         end
-
       end
     end
   end

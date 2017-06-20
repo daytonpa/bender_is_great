@@ -12,7 +12,7 @@ describe 'bender_is_great::apache' do
     'centos' => ['7.2.1511']
   }.each do |platform, version|
     version.each do |v|
-      context "When all attributes are default, on an #{platform.capitalize} #{v}" do
+      context "When installing apache on #{platform.capitalize} #{v}" do
         let(:chef_run) do
           # for a complete list of available platforms and versions see:
           # https://github.com/customink/fauxhai/blob/master/PLATFORMS.md
@@ -20,6 +20,7 @@ describe 'bender_is_great::apache' do
             # Default attributes
           end.converge(described_recipe)
         end
+        let(:service) { chef_run.service('apache2') }
 
         it 'converges successfully' do
           expect { chef_run }.to_not raise_error

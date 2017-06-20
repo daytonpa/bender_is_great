@@ -17,12 +17,15 @@ a webpage with the almighty Bender, because Bender is great!  Destroy All Humans
   * Sit back and watch Chef do its magic.
 
 * ##### Second run:
-  * Chef continuously scans your system for idempotency during a converge, meaning it will verify to see each resource is in its desired state.
+  * Chef scans your system for idempotency during a converge, meaning it will verify to see each resource is in its desired state.
   * If a resource is in its desired state, Chef will skip that resource and move onto the next one.
   * Your second ```kitchen converge``` command should complete exponentially faster.
 
 ### Attributes
 All attributes are currently set to their default inside the ```attributes/default.rb``` file.  Feel free to play around with these attributes to see how Chef manipulates resources with attributes assigned to them.
+* ```node['bender_is_great']['html_title']``` will change the webpage's header title.
+* ```node['bender_is_great']['image_url']``` will accept a url to an image.
+* ```node['bender_is_great']['completion_message']``` accepts a string and displays it as a message.
 
 ### Unit Tests
 All Unit tests are performed by ChefSpec, and can be viewed inside the ```spec/unit/recipes/``` folder.  ChefSpec scans each recipe with its respective spec file.

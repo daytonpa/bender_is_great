@@ -11,6 +11,7 @@ end
 service 'apache2' do
   supports :status => true, :reload => true, :restart => true
   action [:enable, :start]
+  subscribes :restart, 'template[/var/www/bender.html]', :immediately
 end
 
 log "I'm back, baby!" do

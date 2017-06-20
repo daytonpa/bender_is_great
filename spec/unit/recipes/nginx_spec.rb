@@ -12,7 +12,7 @@ describe 'bender_is_great::nginx' do
     'centos' => ['7.2.1511']
   }.each do |platform, version|
     version.each do |v|
-      context "When all attributes are default, on an #{platform.capitalize} #{v}" do
+      context "When installing and configuring nginx on #{platform.capitalize} #{v}" do
 
         let(:chef_run) do
           # for a complete list of available platforms and versions see:
