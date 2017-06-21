@@ -6,7 +6,16 @@
 
 # Bite my shiny metal ass!
 
-# Let us begin by updating our repo cache
+# Create a primary group
+group node['bender_is_great']['group']
+
+# Create sudo user for the instance
+user node['bender_is_great']['user'] do
+  group node['bender_is_great']['group']
+  system node['bender_is_great']['system_user']
+end
+
+# Update our caches, depending on OS
 case node['platform']
 when 'ubuntu'
   include_recipe 'apt'
@@ -22,7 +31,6 @@ else
   end
 end
 
-# nginx
 %w(apache bender).each do |recipe|
   include_recipe "bender_is_great::#{recipe}"
 end

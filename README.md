@@ -21,6 +21,9 @@ a webpage with the almighty Bender, because Bender is great!  Destroy All Humans
   * If a resource is in its desired state, Chef will skip that resource and move onto the next one.
   * Your second ```kitchen converge``` command should complete exponentially faster.
 
+
+* You may login to your machine by entering ```kitchen login``` into your terminal, but only after an initial converge.
+
 ### Attributes
 All attributes are currently set to their default inside the ```attributes/default.rb``` file.  Feel free to play around with these attributes to see how Chef manipulates resources with attributes assigned to them.
 * ```node['bender_is_great']['html_title']``` will change the webpage's header title.
@@ -60,6 +63,16 @@ it "does not discriminate against Bender's desired OS" do
   )
 end
 ```
+
+To run ChefSpec within your repo, run:
+
+```chef exec rspec -fd ./spec/unit/recipes/* --color```
+
+* ```-fd``` is documentation format
+* ```./spec/unit/recipes/*``` runs ChefSpec on all spec files inside the designated folder
+   * You can specify the exact file to run tests so you're not always testing each recipe.  Replace ```*``` with the spec file name.
+   * i.e. ```./spec/unit/recipes/default_spec.rb```
+* ```--color``` adds green/red pass/fail reports
 
 ### .kitchen.yml
 This is our configuration file for spinning up machines with Chef.  Feel free to change between platforms to see how Chef will install each resource depending on the desired platforms.  By default, we are using ubuntu.
