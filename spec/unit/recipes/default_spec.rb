@@ -13,10 +13,8 @@ describe 'bender_is_great::default' do
   }.each do |platform, version|
     version.each do |v|
       context "When converging with default attributes on #{platform.capitalize} #{v}" do
-
         let(:user) { 'root' }
         let(:group) { 'root' }
-        
         let(:chef_run) do
           # for a complete list of available platforms and versions see:
           # https://github.com/customink/fauxhai/blob/master/PLATFORMS.md
@@ -57,7 +55,7 @@ describe 'bender_is_great::default' do
 
         it "does not discriminate against Bender's desired OS" do
           expect(chef_run).to_not write_log('This is the worst kind of discrimination there is: the kind against me!').with(
-           level: :info
+            level: :info
           )
         end
       end

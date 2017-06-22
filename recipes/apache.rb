@@ -4,6 +4,7 @@
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
+# Install apache2 and start the service
 %w(apache2).each do |pkg|
   package pkg do
     action :install
@@ -65,7 +66,7 @@ end
     owner node['bender_is_great']['user']
     group node['bender_is_great']['group']
     mode '0755'
-    source filename+'.conf.erb'
+    source "#{filename}.conf.erb"
 
     #   We could have apache2 restart immediately after any change to any file,
     # but that will add up convergence time.  By setting the notification to

@@ -12,11 +12,9 @@ describe 'bender_is_great::bender' do
   }.each do |platform, version|
     version.each do |v|
       context "When remembering how great Bender is on #{platform.capitalize} #{v}" do
-
         let(:user) { 'root' }
         let(:group) { 'root' }
         let(:comp_message) { 'Test this jazz!' }
-
         let(:chef_run) do
           # for a complete list of available platforms and versions see:
           # https://github.com/customink/fauxhai/blob/master/PLATFORMS.md
@@ -44,7 +42,7 @@ describe 'bender_is_great::bender' do
             user: user,
             group: group,
             mode: '0755',
-            source: 'bender.html.erb'
+            source: 'index.html.erb'
           )
         end
 

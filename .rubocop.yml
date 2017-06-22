@@ -1,0 +1,13 @@
+# Rubocop Lint Checker ignore file
+
+Metrics/LineLength:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+
+Style/HashSyntax:
+  Enabled: false
+Style/TrailingWhitespace:
+  Enabled: false
+Style/ExtraSpacing:
+  Enabled: false

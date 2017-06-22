@@ -20,7 +20,7 @@ template node['bender_is_great']['doc_root'] + '/' + \
   owner node['bender_is_great']['user']
   group node['bender_is_great']['group']
   mode '0755'
-  source 'bender.html.erb'
+  source 'index.html.erb'
   notifies :restart, 'service[apache2]', :delayed
 end
 

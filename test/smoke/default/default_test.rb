@@ -21,10 +21,6 @@ describe service('apache2') do
   it { should be_running }
 end
 
-describe apache_conf('/etc/apache2/ports.conf') do
-  its('Listen') { should eq ["0.0.0.0:80", "443", "443"] }
-end
-
 dir = '/var/www/html/bender_is_great'
 describe directory(dir) do
   it { should exist }
@@ -36,6 +32,9 @@ describe file("#{dir}/index.html") do
   it { should be_file }
 end
 
+describe apache_conf('/etc/apache2/ports.conf') do
+  its('Listen') { should eq ['0.0.0.0:80', '443', '443'] }
+end
 describe port(80) do
   it { should be_listening }
   its('protocols') { should include 'tcp' }

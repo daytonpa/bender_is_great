@@ -13,10 +13,8 @@ describe 'bender_is_great::apache' do
   }.each do |platform, version|
     version.each do |v|
       context "When installing and configuring Apache on #{platform.capitalize} #{v}" do
-
         let(:user) { 'root' }
         let(:group) { 'root' }
-        
         let(:chef_run) do
           # for a complete list of available platforms and versions see:
           # https://github.com/customink/fauxhai/blob/master/PLATFORMS.md
