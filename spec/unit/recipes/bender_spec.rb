@@ -5,7 +5,6 @@
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
 require 'spec_helper'
-
 describe 'bender_is_great::bender' do
   {
     'ubuntu' => ['16.04'],
@@ -17,7 +16,6 @@ describe 'bender_is_great::bender' do
         let(:user) { 'root' }
         let(:group) { 'root' }
         let(:comp_message) { 'Test this jazz!' }
-        let(:template) { chef_run.template('/var/www/html/bender_is_great/index.html') }
 
         let(:chef_run) do
           # for a complete list of available platforms and versions see:
@@ -26,7 +24,7 @@ describe 'bender_is_great::bender' do
             node.normal['bender_is_great']['user'] = user
             node.normal['bender_is_great']['group'] = group
             node.normal['bender_is_great']['completion_message'] = comp_message
-          end.converge(described_recipe)
+          end.converge(described_recipe, 'bender_is_great::apache')
         end
 
         it 'converges successfully' do
@@ -34,7 +32,7 @@ describe 'bender_is_great::bender' do
         end
 
         it 'creates a new server directory for Bender' do
-          expect(chef_run).to create_directory('/etc/apache/bender_is_great').with(
+          expect(chef_run).to create_directory('/var/www/html/bender_is_great').with(
             user: user,
             group: group,
             mode: '0755'
@@ -42,7 +40,7 @@ describe 'bender_is_great::bender' do
         end
 
         it 'creates a landing index.html page for Bender' do
-          expect(chef_run).to create_template(template).with(
+          expect(chef_run).to create_template('/var/www/html/bender_is_great/index.html').with(
             user: user,
             group: group,
             mode: '0755',

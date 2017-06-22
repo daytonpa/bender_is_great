@@ -76,10 +76,27 @@ To run ChefSpec within your repo, run:
    * i.e. ```./spec/unit/recipes/default_spec.rb```
 * ```--color``` adds green/red pass/fail reports
 
+### Integration Tests
+Server integration tests are performed with InSpec.  InSpec is an open-source testing framework for infrastructure with a human-readable language for specifying compliance, security and other policy requirements. When compliance is code, you can integrate automated tests that check for adherence to policy into any stage of your deployment pipeline.  The test file(s) are located in ```/test/smoke/default/```, and are executed with the command ```kitchen verify```.  As illustrated below, we can scan our system's ports to verify connectivity.
+
+```
+describe port(80) do
+  it { should be_listening }
+  its('protocols') { should include 'tcp' }
+  its('addresses') { should include '0.0.0.0' }
+end```
+
 ### .kitchen.yml
 This is our configuration file for spinning up machines with Chef.  Feel free to change between platforms to see how Chef will install each resource depending on the desired platforms.  By default, we are using ubuntu.
 
+Additionally, we are telling our vagrant instance to open ports to allow outside users to connect to our machine.
+
 ```
+driver:
+  name: vagrant
+  network:
+  - ["forwarded_port", {guest: 80, host: 8080}]
+
 platforms:
   - name: ubuntu-16.04
   # - name: centos-7.3
