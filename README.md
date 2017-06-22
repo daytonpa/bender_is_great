@@ -84,7 +84,8 @@ describe port(80) do
   it { should be_listening }
   its('protocols') { should include 'tcp' }
   its('addresses') { should include '0.0.0.0' }
-end```
+end
+```
 
 ### .kitchen.yml
 This is our configuration file for spinning up machines with Chef.  Feel free to change between platforms to see how Chef will install each resource depending on the desired platforms.  By default, we are using ubuntu.
