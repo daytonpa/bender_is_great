@@ -7,7 +7,7 @@ This cookbook is meant to show the Web Team the glorious glories of Chef through
 the mutual love of Bender.  By the end of the converge, you will be able to view
 a webpage with the almighty Bender, because Bender is great!  Destroy All Humans!
 
-(still in progress.... tehehe)
+Once you run your first converge, enter ```http://localhost:8080/bender_is_great/``` into your address bar.
 
 ### Usage
 * ##### First run:
@@ -22,13 +22,15 @@ a webpage with the almighty Bender, because Bender is great!  Destroy All Humans
   * Your second ```kitchen converge``` command should complete exponentially faster.
 
 
-* You may login to your machine by entering ```kitchen login``` into your terminal, but only after an initial converge.
+* You may ssh into to your machine by entering ```kitchen login``` into your terminal, but only after an initial converge.
 
 ### Attributes
-All attributes are currently set to their default inside the ```attributes/default.rb``` file.  Feel free to play around with these attributes to see how Chef manipulates resources with attributes assigned to them.
+All attributes are currently set to their default inside the ```attributes/default.rb``` file.  There is another attributes file named ```bender.rb```, which manipulates the ```templates/bender.html.erb``` file.  Feel free to play around with these attributes to see how Chef manipulates resources with attributes assigned to them.
 * ```node['bender_is_great']['html_title']``` will change the webpage's header title.
-* ```node['bender_is_great']['image_url']``` will accept a url to an image.
+* ```node['bender_is_great']['image_url']``` will accept a url to an image or gif.
 * ```node['bender_is_great']['completion_message']``` accepts a string and displays it as a message.
+* ```node['bender_is_great']['author']``` will author you as the creator of this page dedicated to the almighty Bender Rodriguez.
+
 
 ### Unit Tests
 All Unit tests are performed by ChefSpec, and can be viewed inside the ```spec/unit/recipes/``` folder.  ChefSpec scans each recipe with its respective spec file.

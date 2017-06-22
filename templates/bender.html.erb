@@ -1,3 +1,4 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 
 <head>
@@ -6,9 +7,9 @@
 
 <body>
   <h1>Bender is great!  Bender is great!</h1>
-  <p><%= node['bender_is_great']['completion_message'] %></p>
-  <img src="<%= node['bender_is_great']['image_url'] %>>"</img>
-  <p>This webpage was developed by <%= node['bender_is_great']['author'] %></p>
+  <h3>"<%= node['bender_is_great']['completion_message'] %>"</h3>
+  <img src="<%= node['bender_is_great']['image_url'] %>"></img>
+  <p>This webpage was developed by <%= node['bender_is_great']['author'] %> using Chef.</p>
 </body>
 
 </html>

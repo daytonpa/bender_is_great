@@ -13,16 +13,29 @@ describe 'bender_is_great::default' do
   }.each do |platform, version|
     version.each do |v|
       context "When converging with default attributes on #{platform.capitalize} #{v}" do
+
+        let(:user) { 'root' }
+        let(:group) { 'root' }
+
         let(:chef_run) do
           # for a complete list of available platforms and versions see:
           # https://github.com/customink/fauxhai/blob/master/PLATFORMS.md
           ChefSpec::ServerRunner.new(platform: platform, version: v) do |node|
-            # Default attributes
+            node.normal['bender_is_great']['user'] = user
+            node.normal['bender_is_great']['group'] = group
           end.converge(described_recipe)
         end
 
         it 'converges successfully' do
           expect { chef_run }.to_not raise_error
+        end
+
+        it 'creates the user and group for the system' do
+          expect(chef_run).to create_user(user).with(
+            group: group,
+            system: true
+          )
+          expect(chef_run).to create_group(group)
         end
 
         case platform
